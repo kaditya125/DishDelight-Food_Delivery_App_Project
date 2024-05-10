@@ -1,0 +1,224 @@
+.login-popup {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-popup-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+.login-popup-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.login-popup-title img{
+    width: 16px;
+    cursor: pointer;
+}
+
+.login-popup-title h2 {
+    margin: 0;
+    color: #333; /* Darken title color */
+}
+
+.login-popup-inputs input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    border-bottom: 2px solid #ddd; /* Add bottom border */
+    background-color: #f9f9f9; /* Light background color */
+}
+
+.login-popup-inputs input::placeholder {
+    color: #aaa; /* Placeholder text color */
+}
+
+.login-popup-condition {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.login-popup-condition p {
+    margin: 0;
+    color: #666; /* Lighten text color */
+}
+
+.login-popup-condition input {
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.login-popup-condition input:checked + p {
+    color: #333; /* Change text color when checkbox is checked */
+}
+
+.login-popup-condition input:focus + p {
+    font-weight: bold; /* Add emphasis to text when checkbox is focused */
+}
+ .login-popup-switch{
+    padding: 20px;
+ }
+
+.login-popup-container button{
+    width: 100%;
+    padding: 15px;
+    font-size: 15px;
+    background-color: tomato; /* Button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.login-popup-container button:hover {
+    background-color: rgb(144, 33, 14); /* Darken button color on hover */
+}
+
+.login-popup-links {
+    color: tomato; /* Set initial color */
+    cursor: pointer;
+    transition: color 0.3s; /* Add transition effect */
+}
+
+.login-popup-links :hover {
+    color: tomato; /* Change color on hover */
+}
+
+
+.terms-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    max-height: 100%;
+    overflow-y: auto;
+    position: absolute; /* Ensure positioning is relative to this element */
+}
+
+
+.terms-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's above other content */
+}
+
+.terms-modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    max-width: 50%;
+    max-height: 100%;
+    overflow: auto; /* Enable scrolling if content overflows */
+}
+
+.terms-modal-content h2 {
+    margin-top: 0;
+    color: salmon;
+}
+
+.terms-modal-content h3 {
+    margin-top: 10px;
+    color: tomato;
+}
+
+.terms-modal-content p {
+    
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.terms-modal-content .close {
+    width: 16px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.terms-and-conditions {
+    margin-top: 20px;
+    max-height: 300px; /* Limit height for scrolling */
+}
+
+.terms-link{
+    color: tomato;
+    cursor: pointer;
+}
+
+
+.password-input {
+    position: relative;
+  }
+  
+  .password-input input[type="password"] {
+    padding-right: 30px; /* Add padding to accommodate the toggle button */
+  }
+  
+  .password-toggle {
+    font-size: 15px;
+    color: green;
+    position: absolute;
+    top: 30%; /* Position vertically centered */
+    right: 10px; /* Adjust the position as needed */
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .password-toggle:hover {
+    color: #333;
+    color: red;
+  }
+  
+  .password-error {
+    padding: 0%;
+    color: red;
+    animation: blink-animation 1s infinite;
+  }
+  
+  @keyframes blink-animation {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

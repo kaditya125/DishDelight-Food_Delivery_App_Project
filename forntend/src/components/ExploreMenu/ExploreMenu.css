@@ -46,7 +46,7 @@
 .explore-menu hr{
     margin: 10px 0px;
     height: 2px;
-    background-color: #e2e2e2;
+    background-color: #20d391;
     border: #747474;
 
 }
@@ -55,3 +55,25 @@
     border: 4px solid tomato;
     padding: 2px;
 }
+.explore-menu-list-item {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .explore-menu-list-item img {
+    transition: transform 0.3s ease; /* Add transition effect */
+  }
+  
+  .explore-menu-list-item:hover img {
+    transform: scale(1.1); /* Increase scale on hover */
+  }
+
+  @media (max-width:1050px){
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 14px;
+    }
+  }
+  
+ 
+  

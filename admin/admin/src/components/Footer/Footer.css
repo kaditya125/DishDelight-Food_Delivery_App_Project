@@ -1,0 +1,136 @@
+.footer {
+    color: #d9d9d9;
+    background-color: #323232;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 8vw;
+    padding-top: 80px;
+    margin-top: 60px;
+  }
+  
+  .footer-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column width based on available space */
+    gap: 20px;
+  }
+  
+  .footer-content-left,
+  .footer-content-center {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
+  
+  .footer-content-left li,
+  .footer-content-center li {
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .footer-content-right h2,
+  .footer-content-center h2 {
+    color: wheat;
+  }
+  
+  .footer-social-icons img {
+    width: 40px;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  
+  .footer hr {
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background-color: gray;
+    border: none;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr; 
+      gap: 35px;/* Display as a single column on smaller screens */
+    }
+    .footer-copyright{
+        text-align: center;
+    }
+  }
+  .footer-social-icons img:hover{
+    transform: scale(1.10);
+ }
+  
+ 
+
+
+.footer-content-center ul li {
+  margin-right: 10px; 
+}
+
+
+.footer-content-center img {
+  width: 120px; /* Adjust width of icons */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.footer-content-right {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
+  
+  .contact h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .contact ul {
+    list-style-type:none;
+   
+  }
+  
+  .contact ul li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 20px;
+  }
+  
+  .contact ul li img {
+    margin-right: 10px;
+    width: 40px; /* Adjust size as needed */
+  }
+  
+  .download ul {
+    display: flex;
+    width: 150px; /* Adjust width of icons */
+    height: auto;
+  }
+  
+  .download ul li {
+    list-style: none;
+    margin-right: 10px; /* Adjust margin between icons */
+  }
+  
+  .download ul li img {
+    width: 120px; /* Adjust width of icons */
+    height: auto; /* Maintain aspect ratio */
+  }
+  .contact a {
+    text-decoration: none; /* Remove text decoration */
+    color: inherit; /* Inherit color from parent */
+    text-align: center; /* Center the text */
+    display: block; /* Ensure the link spans the full width of its parent */
+  }
+  
+  .contact a:hover {
+    text-decoration: none; /* Add underline on hover */
+  }
+  

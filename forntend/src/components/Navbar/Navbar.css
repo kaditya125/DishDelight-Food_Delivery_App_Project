@@ -28,7 +28,7 @@
     background: transparent;
     font-size: 16px;
     color: #49557e;
-    border: 1px solid tomato;
+    border: 1px solid rgb(139, 212, 230);
     padding: 10px 30px;
     border-radius: 50px;
     cursor: pointer;
@@ -36,7 +36,7 @@
 }
 
 .navbar button:hover{
-    background-color: #fff4f2;
+    background-color: #8db3b9;
 }
 
 .navbar .active{
@@ -47,17 +47,189 @@
 .navbar li{
     cursor: pointer;
 }
+.navbar-right img{
+    width: 50px;
+    cursor: pointer;
+}
 
 .navbar-search-icon{
     position: relative;
 }
+.navbar-search-icon img {
+    width: 57px; /* Adjust the width of your basket icon */
+    margin-right: 10px;
+  }
 
-.navbar-search-icon .dot{
-    position:absolute;
-    min-width: 10px;
-    min-height: 10px;
-    background-color: tomato;
-    border-radius: 5px;
+  .navbar-search-icon .item-count {
+    position: absolute;
+    width: 20px; /* Adjust width and height to make it round */
+    height: 20px; /* Adjust width and height to make it round */
+    background-color: rgb(118, 189, 222);
+    border-radius: 50%; /* Make it round */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff; /* Adjust text color */
+    font-size: 12px; /* Adjust font size */
+    font-weight: bold;
     top: -8px;
     right: -8px;
 }
+
+
+@media (max-width:1050px){
+    .navbar .logo{
+        width: 140px;
+
+    }
+    .navbar-menu{
+        gap: 20px;
+        font-size: 17px;
+    }
+
+    .navbar-right{
+        gap: 30px;
+    }
+    .navbar-right img{
+        width: 22px;
+    }
+
+    .navbar-right button{
+        padding: 8px 25px;
+    }
+}
+
+
+.navbar-profile{
+    position: relative; 
+    cursor: pointer;
+
+}
+.navbar-profile img{
+    width: 50px;
+}
+.navbar-profile:hover .nav-profile-dropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff2ef;
+    padding: 12px 25px;
+    border-radius: 4px;
+    border: 1px solid tomato;
+    outline: 2px solid white;
+    list-style: none;
+}
+
+
+.nav-profile-dropdown li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.nav-profile-dropdown{
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 1;
+}
+
+.nav-profile-dropdown img{
+    width: 20px;
+}
+
+.nav-profile-dropdown li:hover{
+    color: tomato;
+}
+@media (max-width:900px){
+    .navbar .logo{
+        width: 140px;
+
+    }
+    .navbar-menu{
+        gap: 15px;
+        font-size: 16px;
+    }
+
+    .navbar-right{
+        gap: 20px;
+    }
+    .navbar-right img{
+        width: 20px;
+    }
+
+    .navbar-right button{
+        padding: 7px 20px;
+        font-size: 15px;
+    }
+}
+@media (max-width:750px){
+    
+    .navbar-menu{
+        display: none;
+    }
+
+}
+
+.navbar-profile {
+    position: relative;
+  }
+  
+  .profile-name {
+    
+    left : 20px; 
+    
+     transform: translateX(-50%); 
+    font-size: 16px;
+    color: rgb(158, 149, 149);/* Adjust the color as needed */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .navbar-profile:hover .profile-name {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(139, 212, 230);
+    border-radius: 50px;
+    padding: 0 10px;
+    animation: rotateColor 5s linear infinite; 
+}
+
+.navbar .search-bar input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 10px 0;
+}
+
+.navbar .search-bar button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.navbar .search-bar button:hover {
+    background-color: #8db3b9;
+}
+
+@keyframes rotateColor {
+    0% {
+        border: 2px solid rgba(139, 212, 230, 0.5); /* Initial color */
+    }
+    50% {
+        border: 2px solid rgba(255, 0, 0, 0.5); /* Change to red */
+    }
+    100% {
+        border: 2px solid rgba(139, 212, 230, 0.5); /* Back to initial color */
+    }
+}
+
+
+  

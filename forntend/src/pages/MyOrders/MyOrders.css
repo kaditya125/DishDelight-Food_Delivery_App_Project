@@ -1,0 +1,90 @@
+.my-orders-order {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 2fr 1fr;
+    align-items: center;
+    gap: 30px;
+    font-size: 14px;
+    padding: 20px; /* Increase padding for spacing */
+    margin-bottom: 20px; /* Add margin bottom for spacing */
+    color: #454545;
+    border: 1px solid tomato;
+    border-radius: 5px;
+    grid-gap: 20px;
+}
+
+
+.my-orders-container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 30px;
+    padding: 20px;
+    margin: 10px;
+}
+
+.my-orders-order {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 2fr 1fr;
+    align-items: center;
+    gap: 30px;
+    font-size: 14px;
+    padding: 10px 20px;
+    color: #454545;
+    border: 1px solid tomato;
+    border-radius: 5px;
+    grid-gap: 20px;
+}
+
+.my-orders-order img {
+    width: 50px;
+}
+
+.my-orders-order p{
+    display: flex;
+    align-items: center;
+}
+.my-orders-order p span {
+    
+    cursor: pointer;
+    color: rgb(127, 164, 215);
+}
+.my-orders-order button{
+    cursor: pointer;
+}
+
+.my-orders-order p b {
+    font-weight: 500;
+    color: #454545;
+}
+
+.my-orders-order button {
+    border: none;
+    padding: 12px 0px;
+    border-radius: 4px;
+    background-color: #ffe1e1;
+    color: #454545;
+}
+
+@media (max-width: 900px) {
+    .my-orders-order {
+        grid-template-columns: 1fr 2fr 1fr;
+        row-gap: 5px;
+        font-size: 12px;
+    }
+
+    .my-orders-order button {
+        font-size: 10px;
+    }
+}
+
+
+.imp {
+    margin: 0; /* Remove default margin */
+}
+
+.imp img {
+    width: 30px; /* Adjust the width of the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add some spacing between the icon and text */
+}

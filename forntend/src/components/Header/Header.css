@@ -1,34 +1,40 @@
-.header{
+.header {
     height: 34vw;
     margin: 30px auto;
-    background: url('/header_img.png') no-repeat;
-    background-size: relative;
     position: relative;
-}
-
-.header-contents{
-   position: absolute;
-   display: flex;
-   flex-direction: column;
-   align-items: start;
-   gap: 1.5vw;
-   max-width: 50%;
-   bottom: 10%;
-   left: 6vw;
-   animation: fadeIn 3s;
-}
-
-.header-contents h2{
+    overflow: hidden; /* Ensures the border-radius is applied correctly */
+    border-radius: 10px; /* Add border radius */
+    transition: background-image 0.5s ease-in-out; /* Add transition effect */
+    background-size: contain;
+    
+  }
+  
+  .header-contents {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 50%;
+    bottom: 10%;
+    left: 6vw;
+    animation: fadeIn 3s;
+  }
+  
+  .header-contents h2 {
     font-weight: 500;
     color: white;
     font-size: max(4.5vw, 22px);
-}
-.header-contents p{
+    margin-bottom: 10px; /* Moved from .header-contents */
+  }
+  
+  .header-contents p {
     color: white;
     font-size: 1vw;
-}
-
-.header-contents button{
+   
+  }
+  
+  .header-contents button {
     border: none;
     color: #747474;
     font-weight: 500;
@@ -37,4 +43,29 @@
     font-size: max(1vw, 13px);
     border-radius: 50px;
     cursor: pointer;
-}
+    background-color: #4CAF50; /* Moved from .header-contents button */
+    color: white; /* Moved from .header-contents button */
+  }
+  
+  .header-contents button a {
+    color: white;
+  }
+  
+  @media (max-width: 1050px) {
+    .header-contents {
+      max-width: 45%;
+    }
+  }
+  
+  @media (max-width: 750px) {
+    .header-contents {
+      max-width: 65%;
+    }
+    .header-contents p {
+      display: none;
+    }
+    .header-contents button {
+      padding: 2vw 4vw;
+    }
+  }
+  
