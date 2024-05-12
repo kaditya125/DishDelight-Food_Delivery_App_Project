@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { NavLink } from 'react-router-dom';
 
 const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
     const { url, setToken } = useContext(StoreContext);
@@ -116,7 +117,7 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
                     </div>
                     {currState === "Sign Up" && (
                         <>
-                            <input name='confirmPassword' onChange={onChangeHandler} value={data.confirmPassword} type="password" placeholder='Confirm Password' />
+                            <input name='confirmPassword' onChange={onChangeHandler} value={data.confirmPassword} type="text" placeholder='Confirm Password' />
                         </>
                     )}
                     {signupError && <span className="signup-error">{signupError}</span>} {/* Display signup error */}
@@ -129,9 +130,16 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
                 </div>
                 <div className='login-popup-switch'>
                     {currState === "Login" ?
+                    <div className='login'>
                         <p>Create a new account? <span className="login-popup-links" onClick={() => setCurrState("Sign Up")}>Click here</span></p>
+                        <p>Forget Password? <NavLink to="./password-reset" className={"login-popup-links"}  onClick={() => setShowLogin(false)}>Click Here</NavLink></p>
+
+                    </div>
+                        
                         :
-                        <p>Already have an account? <span className="login-popup-links" onClick={() => setCurrState("Login")}>Login here</span></p>}
+                        
+                        <p>Already have an account? <span className="login-popup-links" onClick={() => setCurrState("Login")}>Login here</span></p>
+                        }
                 </div>
             </form>
 

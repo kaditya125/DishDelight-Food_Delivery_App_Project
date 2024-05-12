@@ -87,14 +87,18 @@ import cooking from './cooking.gif'
 import delivery from './delivery.gif'
 import delivered from './delivered.png'
 import pending from './pending.gif'
+import Shipped from './Shipped.png'
+import ordered from './ordered.png'
 
 
 export const assets = {
     logo,
     food_pic,
     cooking,
+    Shipped,
     delivery,
     delivered,
+    ordered,
     pending,
     shop,
     shop1,

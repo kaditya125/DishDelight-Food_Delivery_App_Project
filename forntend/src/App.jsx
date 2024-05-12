@@ -12,6 +12,9 @@ import MyOrders from './pages/MyOrders/MyOrders';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ChatBot from './components/ChatBot/ChatBot';
+import OrderStatus from './pages/OrderStaus/OrderStatus';
+import ForgotPass from './components/ForgotPass/ForgotPass';
+import PassWordReset from './components/PassWordReset/PassWordReset';
 
 const App = () => {
     const [showLogin, setShowLogin] = useState(false);
@@ -25,12 +28,16 @@ const App = () => {
             <div className='app'>
                 <Navbar setShowLogin={setShowLogin} loggedInUserName={loggedInUserName} />
                 <Routes>
+                    
+                    <Route path='forgotpassword/:id/:token' element={<ForgotPass/>}/>
+                    <Route path='password-reset' element={<PassWordReset/>}/>
                     <Route path='/' element={<Home />} />
                     <Route path='/cart' element={<Cart />} />
                     <Route path='./explore-menu' element={<ExploreMenu/>} />
                     <Route path='/order' element={<PlaceOrder />} />
                     <Route path='/verify' element= {<Verify/>}/>
                     <Route path='/myorders' element={<MyOrders/>} />
+                    <Route path='/orderstatus' element ={<OrderStatus/>}/>
                     
                 </Routes>
             </div>

@@ -20,6 +20,9 @@
     left: 6vw;
     animation: fadeIn 3s;
   }
+  .color{
+    color: #4CAF50;
+  }
   
   .header-contents h2 {
     font-weight: 500;

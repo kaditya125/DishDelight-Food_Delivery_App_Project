@@ -41,6 +41,8 @@ const Orders = ({ url }) => {
     switch (status) {
       case "Food Processing":
         return <img src={assets.cooking} alt="Food Processing Icon" />;
+      case "Food Shipped":
+        return <img src={assets.Shipped} alt="Food Shipped Icon" />;  
       case "Out for delivery":
         return <img src={assets.delivery} alt="Out for Delivery Icon" />;
       case "Delivered":
@@ -82,6 +84,7 @@ const Orders = ({ url }) => {
 
             <select onChange={(event) => statusHandler(event, order._id)} value={order.status} name="" id="">
               <option value="Food Processing">Food Processing</option>
+              <option value="Food Shipped">Food Shipped</option>
               <option value="Out for delivery">Out for Delivery</option>
               <option value="Delivered">Delivered</option>
             </select>

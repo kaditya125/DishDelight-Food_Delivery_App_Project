@@ -5,17 +5,22 @@ import { StoreContext } from '../../context/StoreContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { assets } from '../../assets/assets';
+import { useNavigate } from 'react-router-dom';
 
 const MyOrders = () => {
     const { url, token } = useContext(StoreContext);
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const fetchOrders = async () => {
         try {
             const response = await axios.post(`${url}/api/order/userorders`, {}, { headers: { token } });
-            console.log(response);
+             console.log(response);
+            // console.log("aditya "+response._id);
+            // const orderID = response._id;
+            // console.log(orderID);
             setOrders(response.data.data);
         } catch (error) {
             console.error('Error fetching orders:', error);
@@ -39,6 +44,8 @@ const MyOrders = () => {
                 return <img src={assets.pending} alt="Pending Icon" />;
             case "Food Processing":
                 return <img src={assets.cooking} alt="Processing Icon" />;
+            case "Food Shipped":
+                return <img src={assets.Shipped} alt="food Shipped" />;
             case "Out for delivery":
                 return <img src={assets.delivery} alt="Shipped Icon" />;
             case "Delivered":
@@ -48,6 +55,13 @@ const MyOrders = () => {
         }
     }
 
+    const handleTrackOrder = (status, orderId) => {
+        fetchOrders();
+        navigate(`/orderstatus?orderId=${orderId}&status=${status}`); 
+        // Use '&' instead of '?'
+    };
+    
+
     return (
         <div className="my-orders-container">
             <h1>My Orders</h1>
@@ -56,24 +70,25 @@ const MyOrders = () => {
             {!loading && !error && (
                 <div className="orders-list">
                     {orders.map((order, index) => (
-                        <div key={index} className="my-orders-order">
-                            <img src={assets.parcel} alt="" />
-                            <p>
-                                {order.items.map((item, index) => (
-                                    <span key={index}>
-                                        {index === order.items.length - 1
-                                            ? `${item.name} X ${item.quantity}`
-                                            : `${item.name} X ${item.quantity} `
-                                        }
-                                    </span>
-                                ))}
-                            </p>
-                            <p>&#x20b9; {order.amount}.00</p>
-                            <p>Items: {order.items.length}</p>
-                            <p><span><p className='imp'> {getStatusIcon(order.status)}</p> </span><b>{order.status}</b></p>
-                            
-                            <button onClick={fetchOrders}>Track Order</button>
-                        </div>
+                       <div key={index} className="my-orders-order">
+                       <img src={assets.parcel} alt="" />
+                       <p>
+                           {order.items.map((item, index) => (
+                               <span key={index}>
+                                   {index === order.items.length - 1
+                                       ? `${item.name} X ${item.quantity}`
+                                       : `${item.name} X ${item.quantity} `
+                                   }
+                               </span>
+                           ))}
+                       </p>
+                       <p>&#x20b9; {order.amount}.00</p>
+                       <p>Items: {order.items.length}</p>
+                       <p><span><p className='imp'> {getStatusIcon(order.status)}</p> </span><b>{order.status}</b></p>
+                       {/* <p><b>Order ID: {order._id}</b></p>  */}
+                       <button onClick={() => handleTrackOrder(order.status,order._id)}>Track Order</button>
+                      </div>
+                   
                     ))}
                 </div>
             )}

@@ -23,11 +23,13 @@ import list from './list.png'
 import cooking from './cooking.gif'
 import delivery from './delivery.gif'
 import delivered from './delivered.png'
+import Shipped from './Shipped.png'
 
 export const assets ={
     logo,
     logo1,
     profile,
+    Shipped,
     list,
     logo2,
     add_icon,
