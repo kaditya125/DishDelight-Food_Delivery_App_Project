@@ -15,16 +15,18 @@ import ChatBot from './components/ChatBot/ChatBot';
 import OrderStatus from './pages/OrderStaus/OrderStatus';
 import ForgotPass from './components/ForgotPass/ForgotPass';
 import PassWordReset from './components/PassWordReset/PassWordReset';
+import EmailVarification from './components/EmailVarification/EmailVarification';
 
 const App = () => {
     const [showLogin, setShowLogin] = useState(false);
     const [loggedInUserName, setLoggedInUserName] = useState("");
+    const [ email, setEmail] = useState("");
 
     return (
         <>
            <ToastContainer/>
            <ChatBot/>
-            {showLogin ? <LoginPopup setShowLogin={setShowLogin} setLoggedInUserName={setLoggedInUserName} /> : null}
+            {showLogin ? <LoginPopup setShowLogin={setShowLogin} setLoggedInUserName={setLoggedInUserName} setEmail={setEmail}/> : null}
             <div className='app'>
                 <Navbar setShowLogin={setShowLogin} loggedInUserName={loggedInUserName} />
                 <Routes>
@@ -38,6 +40,7 @@ const App = () => {
                     <Route path='/verify' element= {<Verify/>}/>
                     <Route path='/myorders' element={<MyOrders/>} />
                     <Route path='/orderstatus' element ={<OrderStatus/>}/>
+                    <Route path='/email-verification'   element={<EmailVarification email={email}/>}/>
                     
                 </Routes>
             </div>

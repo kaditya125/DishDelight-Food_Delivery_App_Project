@@ -23,6 +23,7 @@ const Verify = () => {
             if (response.data.success) {
                 navigate("/myorders");
                 toast.success("Order Placed Successfully! ");
+                console.log(data.email);
                 try {
                     // Send confirmation email after placing the order
                     await sendConfirmationEmail(data.email, getTotalCartAmount());

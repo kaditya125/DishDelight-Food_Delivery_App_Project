@@ -80,11 +80,79 @@ const registerUser = async (req, res) => {
         const user = await newUser.save();
         const token = createToken(user._id);
 
-        res.json({ success: true, token, message: "User registered successfully" });
+        res.json({ success: true, token, message: "User registered successfully" ,email:user.email});
     } catch (error) {
         console.error(error);
         res.json({ success: false, message: "Internal Server Error" });
     }
 };
 
-export { loginUser, registerUser };
+
+const validateUser = async (req, res) => {
+    try {
+        // Extract user ID and token from request params
+        const { id, token } = req.params;
+        console.log(id, token);
+        
+        try {
+            const validuser = await userModel.findOne({_id:id,  verifyToken:token} )
+             console.log(validuser);
+            // console.log("User validated successfully.")
+
+            const verifyToken = jwt.verify(token,process.env.JWT_SECRET);
+            // console.log(verifyToken);
+            if(validuser && verifyToken._id){
+                res.status(201).json({status:201,validuser, message: "User validated successfully."})
+            }else{
+                res.status(401).json({status:401,message:"user not exist"})
+            }
+        } catch (error) {
+            res.status(401).json({status:401,message:"error occur"})
+        }
+
+      
+    } catch (error) {
+        // If an error occurs, send an error response
+        console.error("Error validating user:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
+
+const verifyEmail = async (req, res) => {
+    try {
+        const { email, otp } = req.body;
+        //console.log("Received email:", email);
+       // console.log("Received OTP:", otp);
+
+        const user = await userModel.findOne({ email });
+        //console.log("User found:", user);
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found." });
+        }
+
+       // console.log("Stored OTP:", user.verifyOTP);
+       // console.log(otp);
+
+        if (user.verifyOTP === parseInt(otp)) {
+            user.isVerified = true;
+          //  console.log("User verified:", user.isVerified);
+            await user.save();
+            console.log("Updated user:", user);
+
+            return res.status(200).json({ status: 200, success: true, message: "Email verification successful." });
+        } else {
+            console.log("Invalid OTP.");
+            return res.status(400).json({ success: false, message: "Invalid OTP." });
+        }
+    } catch (error) {
+        console.error("Error verifying OTP:", error);
+        return res.status(500).json({ success: false, message: "An error occurred while verifying OTP." });
+    }
+};
+
+
+
+
+
+export { loginUser, registerUser,validateUser ,verifyEmail};

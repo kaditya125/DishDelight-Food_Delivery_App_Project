@@ -1,4 +1,4 @@
-.reset-password-popup {
+.reset-password-form {
     position: fixed;
     z-index: 9999;
     width: 100%;
@@ -11,8 +11,8 @@
     align-items: center;
 }
 
-.reset-password-popup-container {
-    background-image: url('https://images.pexels.com/photos/867349/pexels-photo-867349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); 
+.reset-password-form-container {
+    background-image: url('https://images.pexels.com/photos/1001773/pexels-photo-1001773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); 
     background-size: cover;
     background-position: center;
     background-color: #fff;
@@ -22,25 +22,17 @@
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
 }
 
-.reset-password-popup-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.reset-password-form-title {
     color: #fff;
     margin-bottom: 20px;
 }
 
-.reset-password-popup-title img {
-    width: 16px;
-    cursor: pointer;
-}
-
-.reset-password-popup-title h2 {
+.reset-password-form-title h2 {
     margin: 0;
     color: #fff;
 }
 
-.reset-password-popup-inputs input {
+.reset-password-form-inputs input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -50,11 +42,11 @@
     background-color: #f9f9f9;
 }
 
-.reset-password-popup-inputs input::placeholder {
+.reset-password-form-inputs input::placeholder {
     color: #aaa;
 }
 
-.reset-password-popup-container button {
+.reset-password-form-container button {
     width: 100%;
     padding: 15px;
     font-size: 15px;
@@ -66,6 +58,28 @@
     transition: background-color 0.3s ease;
 }
 
-.reset-password-popup-container button:hover {
+.reset-password-form-container button:hover {
     background-color: rgb(144, 33, 14);
+}
+/* ForgotPass.css */
+
+.reset-password-form-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reset-password-form-title h2 {
+    margin: 0;
+    color: #333;
+}
+
+.reset-password-form-title img {
+    width: 16px; /* Adjust the size as needed */
+    height: 16px; /* Adjust the size as needed */
+    cursor: pointer;
+}
+
+.reset-password-form-title img:hover {
+    opacity: 0.7; /* Change the opacity on hover as desired */
 }

@@ -9,6 +9,7 @@ const placeOrder = async (req, res) => {
         // Create a new order
         const newOrder = new orderModel({
             userId: req.body.userId,
+            userEmail: req.body.userEmail, // Add user's email address to the order details
             items: req.body.items,
             amount: req.body.amount,
             address: req.body.address
@@ -66,6 +67,7 @@ const placeOrder = async (req, res) => {
         res.status(500).json({ success: false, message: "Error placing order from backend" });
     }
 };
+
 
 const verifyOrder  = async (req,res) =>{
      const {orderId,success}  = req.body;

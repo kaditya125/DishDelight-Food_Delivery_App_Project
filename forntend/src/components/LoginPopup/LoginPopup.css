@@ -9,10 +9,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('./assets/food_photo8.jpg'); 
+    background-size: cover;
+    background-position: center;
 }
 
 .login-popup-container {
     background-color: #fff;
+    background-image: url('https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); 
+    background-size: cover;
+    background-position: center;
     padding: 30px;
     border-radius: 10px;
     width: 400px;

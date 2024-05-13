@@ -27,6 +27,7 @@
 
 .order-status-timeline {
     max-width: 1200px;
+
     margin: 50px auto 0;
     display: flex;
     flex-direction: column;
@@ -35,7 +36,7 @@
 
 .status img {
     width: 30px; /* Adjust the width of the icon */
-    height: 30px; /* Adjust the height of the icon */
+    height: 40px; /* Adjust the height of the icon */
     margin-right: 10px; /* Add some spacing between the icon and the step name */
 }
 
@@ -55,7 +56,9 @@
 }
 
 .order-status-step {
-    margin-bottom: 20px;
+    width: 500px;
+    margin-bottom: 20px; 
+    max-width: 1900px;
     display: flex;
     align-items: center;
     min-width: 470px; /* Set minimum width to ensure proper alignment */
@@ -63,24 +66,17 @@
 
 .status {
     display: flex;
+    width: 400px;
     align-items: center;
     padding: 20px 30px;
-    background-color: #d8caca;
+    background-color: #99e99f;
     border-radius: 6px;
     font-size: 15px;
     margin-bottom: 10px; /* Add some space between status boxes */
     min-width: 200px; /* Set minimum width for consistency */
 }
 
-.left {
-    
-    margin-right: auto; /* Pushes the status box to the left */
-}
 
-.right {
-  
-    margin-left: auto; /* Pushes the status box to the right */
-}
 
 .line {
     position: absolute;
@@ -106,4 +102,51 @@
  
     
 } */
+
+.order-status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-details {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.order-status-timeline {
+    display: flex;
+    align-items: flex-start;
+}
+
+.timeline {
+    width: 2px;
+    background-color: #ccc;
+    margin-right: 20px; /* Adjust margin to separate timeline from steps */
+}
+
+.order-steps {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-status-step {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+}
+
+.status img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.step-time {
+    margin-left: auto;
+    font-size: 14px;
+}
 

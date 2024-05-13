@@ -83,12 +83,31 @@ const Navbar = ({ setShowLogin, loggedInUserName }) => {
                         <button onClick={handleSearch}>{searchButtonText}</button>
                     </div>
                 )}
+                 {!token ? (
                 <div className="navbar-search-icon">
-                    <Link to={'/Cart'}>
-                        {totalItemsInCart > 0 ? <img src={assets.food_pic} alt="" /> : <img src={assets.shop1} alt="" />}
-                        {totalItemsInCart > 0 && <div className="item-count">{totalItemsInCart}</div>}
+                    <div  onClick={() => toast.info('Please log in to access the cart')}>
+                    {totalItemsInCart > 0 ? (
+                            <>
+                                <img src={assets.food_pic} alt="" />
+                                <div className="item-count">{totalItemsInCart}</div>
+                            </>):(<img src={assets.shop1} alt="" />)}
+                    </div>
+                    
+                </div>
+            ) : (
+                <div className="navbar-search-icon">
+                    <Link to="/Cart">
+                        {totalItemsInCart > 0 ? (
+                            <>
+                                <img src={assets.food_pic} alt="" />
+                                <div className="item-count">{totalItemsInCart}</div>
+                            </>
+                        ) : (
+                            <img src={assets.shop1} alt="" />
+                        )}
                     </Link>
                 </div>
+            )}
 
                 {!token ?
                     <button onClick={() => setShowLogin(true)}>sign in</button> :
