@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './OrderStatus.css'; // Import the CSS file
 import { assets } from '../../assets/assets';
 
 const OrderStatus = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [orderDetails, setOrderDetails] = useState({ orderId: '', status: '', expectedDeliveryTime: null });
 
     // Extract order details from query parameter
@@ -40,6 +41,10 @@ const OrderStatus = () => {
         return timeForStep.toLocaleTimeString();
     });
 
+    const handleTrackDelivery = () => {
+        navigate('/map-container'); // Navigate to the map container
+    };
+
     return (
         <div className="order-status-container">
             <h2>Order Status</h2>
@@ -48,7 +53,7 @@ const OrderStatus = () => {
                 <p>Expected Delivery Time: {orderDetails.expectedDeliveryTime ? orderDetails.expectedDeliveryTime.toLocaleTimeString() : ""}</p>
             </div>
             <div className="order-status-timeline">
-                <div className="timeline"></div>
+                
                 <div className="order-steps">
                     {steps.map((step, index) => (
                         <motion.div
@@ -68,8 +73,14 @@ const OrderStatus = () => {
                             </div>
                            {/* Display expected time for each step */}
                         </motion.div>
+             
                     ))}
+                    <div className="map-button">
+                    <button onClick={handleTrackDelivery}>Track Delivery on Map</button>
+                    </div>
+                  
                 </div>
+                   
             </div>
         </div>
     );

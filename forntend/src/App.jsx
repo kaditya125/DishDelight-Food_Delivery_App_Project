@@ -16,6 +16,7 @@ import OrderStatus from './pages/OrderStaus/OrderStatus';
 import ForgotPass from './components/ForgotPass/ForgotPass';
 import PassWordReset from './components/PassWordReset/PassWordReset';
 import EmailVarification from './components/EmailVarification/EmailVarification';
+import MapContainer from './components/MapContainer/MapContainer';
 
 const App = () => {
     const [showLogin, setShowLogin] = useState(false);
@@ -41,6 +42,7 @@ const App = () => {
                     <Route path='/myorders' element={<MyOrders/>} />
                     <Route path='/orderstatus' element ={<OrderStatus/>}/>
                     <Route path='/email-verification'   element={<EmailVarification email={email}/>}/>
+                    <Route path='/map-container' element={<MapContainer/>}/>
                     
                 </Routes>
             </div>
