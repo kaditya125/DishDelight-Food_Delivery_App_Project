@@ -13,6 +13,8 @@ const Navbar = ({ setShowLogin, loggedInUserName }) => {
     const [searchQuery, setSearchQuery] = useState(""); // State to store search query
     const [searchButtonText, setSearchButtonText] = useState(""); // State to manage search button text
     const { cartItems, token, setToken, setCartItems } = useContext(StoreContext);
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [darkMode, setDarkMode] = useState(false); // State to manage dark mode
     const navigate = useNavigate();
 
     // Calculate total number of items in cart
@@ -41,6 +43,10 @@ const Navbar = ({ setShowLogin, loggedInUserName }) => {
         return () => clearInterval(interval);
     }, []);
 
+    const handleDropdownToggle = () => {
+        setShowDropdown(!showDropdown); // Toggle dropdown visibility
+    };
+
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('Name');
@@ -60,14 +66,36 @@ const Navbar = ({ setShowLogin, loggedInUserName }) => {
         setSearchVisible(false);
     }
 
+    // Function to toggle dark mode
+    const toggleDarkMode = () => {
+        // setDarkMode(!darkMode);
+        // You can apply additional logic here to switch between light and dark themes
+        useEffect(() => {
+            // Retrieve theme mode from localStorage
+            const themeMode = localStorage.getItem('theme');
+        
+            // Set dark mode state based on theme mode
+            if (themeMode === 'dark') {
+                setDarkMode(true);
+            } else {
+                setDarkMode(false);
+            }
+        }, []);
+        
+    }
+
     return (
-        <div className='navbar'>
+        <div className={`navbar ${darkMode ? 'dark' : ''}`}>
             <Link to={'/'}><img src={assets.logo1} alt="" className="logo" /></Link>
             <ul className="navbar-menu">
                 <Link to={'/'} onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>home</Link>
                 <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>menu</a>
                 <a href='#app-download' onClick={() => setMenu("mobile-app")} className={menu === "mobile-app" ? "active" : ""}>mobile-app</a>
                 <a href='#footer' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>contact us</a>
+                <label className="switch">
+                    <input type="checkbox" onChange={toggleDarkMode} />
+                    <span className="slider"></span>
+                </label>
             </ul>
             <div className="navbar-right">
                 {!searchVisible ? (
@@ -83,31 +111,31 @@ const Navbar = ({ setShowLogin, loggedInUserName }) => {
                         <button onClick={handleSearch}>{searchButtonText}</button>
                     </div>
                 )}
-                 {!token ? (
-                <div className="navbar-search-icon">
-                    <div  onClick={() => toast.info('Please log in to access the cart')}>
-                    {totalItemsInCart > 0 ? (
-                            <>
-                                <img src={assets.food_pic} alt="" />
-                                <div className="item-count">{totalItemsInCart}</div>
-                            </>):(<img src={assets.shop1} alt="" />)}
+                {!token ? (
+                    <div className="navbar-search-icon">
+                        <div onClick={() => toast.info('Please log in to access the cart')}>
+                            {totalItemsInCart > 0 ? (
+                                <>
+                                    <img src={assets.food_pic} alt="" />
+                                    <div className="item-count">{totalItemsInCart}</div>
+                                </>) : (<img src={assets.shop1} alt="" />)}
+                        </div>
+
                     </div>
-                    
-                </div>
-            ) : (
-                <div className="navbar-search-icon">
-                    <Link to="/Cart">
-                        {totalItemsInCart > 0 ? (
-                            <>
-                                <img src={assets.food_pic} alt="" />
-                                <div className="item-count">{totalItemsInCart}</div>
-                            </>
-                        ) : (
-                            <img src={assets.shop1} alt="" />
-                        )}
-                    </Link>
-                </div>
-            )}
+                ) : (
+                    <div className="navbar-search-icon">
+                        <Link to="/Cart">
+                            {totalItemsInCart > 0 ? (
+                                <>
+                                    <img src={assets.food_pic} alt="" />
+                                    <div className="item-count">{totalItemsInCart}</div>
+                                </>
+                            ) : (
+                                <img src={assets.shop1} alt="" />
+                            )}
+                        </Link>
+                    </div>
+                )}
 
                 {!token ?
                     <button onClick={() => setShowLogin(true)}>sign in</button> :

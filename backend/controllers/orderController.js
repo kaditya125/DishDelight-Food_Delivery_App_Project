@@ -52,7 +52,7 @@ const placeOrder = async (req, res) => {
         const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: 'payment',
-            success_url: `${req.headers.origin}/verify?success=true&orderId=${newOrder._id}`,
+            success_url: `${req.headers.origin}/verify?success=true&orderId=${newOrder._id}&order=${newOrder}}`,
             cancel_url: `${req.headers.origin}/verify?success=false&orderId=${newOrder._id}`,
         });
 
@@ -99,6 +99,19 @@ const userOrders =async ( req, res )=>{
      }
 }
 
+const getOrderById = async (req, res) => {
+    try {
+        console.log("hey");
+        const orderId = req.orderId;
+        const order = await orderModel.findById(orderId);
+        res.json({ success: true, data: order });
+    } catch (error) {
+        console.error('Error retrieving order:', error);
+        res.status(500).json({ success: false, message: 'Error retrieving order' });
+    }
+};
+
+
 
 //Listing order for admin panel
 
@@ -126,4 +139,4 @@ const updateStatus = async (req,res) =>{
   }
 }
 
-export { placeOrder,verifyOrder,userOrders,listorders,updateStatus};
+export { placeOrder,verifyOrder,userOrders,listorders,updateStatus,getOrderById};

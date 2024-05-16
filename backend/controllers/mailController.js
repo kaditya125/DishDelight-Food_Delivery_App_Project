@@ -17,19 +17,28 @@ const transporter = nodemailer.createTransport({
 const sendMail = async (req, res) => {
     try {
         // Extract necessary data from request body
-        const { to, subject, html } = req.body;
+        const { email, orderData, orderItems, subject, html } = req.body;
 
-        // Check if any of the required fields are missing
-        if (!to || !subject || !html) {
-            return res.status(400).json({ error: "Missing required fields (to, subject, html)" });
-        }
+        // Construct email content
+        let orderDetails = '';
+        orderItems.forEach((item) => {
+            orderDetails += `<p>${item.name} - Quantity: ${item.quantity} - Price: ${item.price * item.quantity}</p>`;
+        });
+
+        const emailContent = `
+          <p>Dear Customer,</p>
+          <p>Your order has been successfully placed with the following details:</p>
+          ${orderDetails}
+          <p>Total Amount: ${orderData.amount}</p>
+          <p>Thank you for shopping with us!</p>
+        `;
 
         // Send the email using nodemailer
         const info = await transporter.sendMail({
             from: '"DishDelight" <adit.jnu778199@gmail.com>',
-            to: to,
+            to: email,
             subject: subject,
-            html: html
+            html: emailContent
         });
 
         // Log the message sent and send a response
@@ -57,15 +66,15 @@ const forgetpass = async (req, res) => {
         
         try {
             const userfind =  await  userModel.findOne({email:email});
-             console.log(userfind);
+           //  console.log(userfind);
 
             const token = jwt.sign({_id:userfind._id},process.env.JWT_SECRET,{
                 expiresIn:"1d"
             });
-            console.log("token"+token);
+           // console.log("token"+token);
 
             const setusertoken = await userModel.findByIdAndUpdate({_id:userfind._id},{varifytoken:token},{new:true});
-            console.log("setusertoken",setusertoken);
+           // console.log("setusertoken",setusertoken);
 
             if(setusertoken){
                 const mailOptions ={
@@ -109,7 +118,7 @@ const sendVerificationOTP = async (req, res) => {
         // Extract email from request body
         const { email } = req.body;
 
-        console.log("aDitya "+ email)
+       // console.log("aDitya "+ email)
 
         // Check if email is provided
         if (!email) {

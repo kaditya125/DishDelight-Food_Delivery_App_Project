@@ -17,11 +17,15 @@ import ForgotPass from './components/ForgotPass/ForgotPass';
 import PassWordReset from './components/PassWordReset/PassWordReset';
 import EmailVarification from './components/EmailVarification/EmailVarification';
 import MapContainer from './components/MapContainer/MapContainer';
+import ProductDetail from './components/ProductDetail/ProductDetail';
+
 
 const App = () => {
     const [showLogin, setShowLogin] = useState(false);
     const [loggedInUserName, setLoggedInUserName] = useState("");
-    const [ email, setEmail] = useState("");
+    const [email, setEmail] = useState("");
+    const [orderItems, setOrderItems] = useState([]);
+    const [orderData, setOrderData] = useState({});
 
     return (
         <>
@@ -31,19 +35,19 @@ const App = () => {
             <div className='app'>
                 <Navbar setShowLogin={setShowLogin} loggedInUserName={loggedInUserName} />
                 <Routes>
-                    
                     <Route path='forgotpassword/:id/:token' element={<ForgotPass/>}/>
                     <Route path='password-reset' element={<PassWordReset/>}/>
                     <Route path='/' element={<Home />} />
                     <Route path='/cart' element={<Cart />} />
                     <Route path='./explore-menu' element={<ExploreMenu/>} />
-                    <Route path='/order' element={<PlaceOrder />} />
+                    <Route path='/order' element={<PlaceOrder  />} />
                     <Route path='/verify' element= {<Verify/>}/>
-                    <Route path='/myorders' element={<MyOrders/>} />
+                    <Route path='/myorders' element={<MyOrders />} />
                     <Route path='/orderstatus' element ={<OrderStatus/>}/>
-                    <Route path='/email-verification'   element={<EmailVarification email={email}/>}/>
+                    <Route path='/email-verification' element={<EmailVarification email={email}/>}/>
                     <Route path='/map-container' element={<MapContainer/>}/>
-                    
+                    <Route path='/product-details' element={<ProductDetail />} />
+
                 </Routes>
             </div>
             <Footer />

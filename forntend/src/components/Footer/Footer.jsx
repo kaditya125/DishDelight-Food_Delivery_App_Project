@@ -1,12 +1,51 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Footer.css';
 import { assets } from '../../assets/assets';
 
 const Footer = () => {
   const handleMapClick = () => {
-    const mapUrl = `https://www.google.com/maps?q=${28.540427},${77.168297}`;
+    const mapUrl = `https://www.google.com/maps?q=${28.555670},${77.175209}`;
     window.open(mapUrl, '_blank');
   };
+
+  useEffect(() => {
+    async function initAerialView() {
+      const PARAMETER_VALUE = '1600 Amphitheatre Parkway, Mountain View, CA 94043';
+      const API_KEY = 'AIzaSyBeaBoaWNv0CfV5TpPG1DLS14HO83f4qKg';
+
+      const displayEl = document.querySelector('.aerial-view-media');
+
+      displayEl.addEventListener('click', function () {
+        if (displayEl.paused) {
+          displayEl.play();
+        } else {
+          displayEl.pause();
+        }
+      });
+
+      const parameterKey = videoIdOrAddress(PARAMETER_VALUE);
+      const urlParameter = new URLSearchParams();
+      urlParameter.set(parameterKey, PARAMETER_VALUE);
+      urlParameter.set('key', API_KEY);
+      const response = await fetch(`https://aerialview.googleapis.com/v1/videos:lookupVideo?${urlParameter.toString()}`);
+      const videoResult = await response.json();
+
+      if (videoResult.state === 'PROCESSING') {
+        alert('Video still processing..');
+      } else if (videoResult.error && videoResult.error.code === 404) {
+        alert('Video not found. To generate video for an address, call on Aerial view renderVideo method.');
+      } else {
+        displayEl.src = videoResult.uris.MP4_MEDIUM.landscapeUri;
+      }
+    }
+
+    function videoIdOrAddress(value) {
+      const videoIdRegex = /[0-9a-zA-Z-_]{22}/;
+      return value.match(videoIdRegex) ? 'videoId' : 'address';
+    }
+
+    initAerialView();
+  }, []);
 
   return (
     <div className='footer' id='footer'>
@@ -24,12 +63,11 @@ const Footer = () => {
         <div className="footer-content-center">
           <h2>COMPANY</h2>
           <ul>
-             <li><a href="./">Home</a></li>
-             <li>About us</li>
-             <li>Delivery</li>
-             <li>Privacy Policy</li>
+            <li><a href="./">Home</a></li>
+            <li>About us</li>
+            <li>Delivery</li>
+            <li>Privacy Policy</li>
           </ul>
-
         </div>
         <div className="footer-content-right">
           <div className="contact">
@@ -68,8 +106,19 @@ const Footer = () => {
               <li><img src={assets.app_store} alt="" /></li>
             </ul>
           </div>
+         
+        </div>
+        <div className="footer-content-aerial-view-container">
+        <h2>AERIAL VIEW</h2>
+        <div className="container">
+
+          <video className="aerial-view-media" muted autoPlay loop>
+            Your browser does not support HTML5 video.
+          </video>
         </div>
       </div>
+      </div>
+     
       <hr />
       <p className="footer-copyright">Copyright 2024 @ DishDelight.com - All Right Reserved</p>
     </div>

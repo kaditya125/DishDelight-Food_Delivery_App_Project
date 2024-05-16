@@ -96,7 +96,7 @@ const validateUser = async (req, res) => {
         
         try {
             const validuser = await userModel.findOne({_id:id,  verifyToken:token} )
-             console.log(validuser);
+             //console.log(validuser);
             // console.log("User validated successfully.")
 
             const verifyToken = jwt.verify(token,process.env.JWT_SECRET);

@@ -110,19 +110,19 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName,setEmail }) => {
                 <div className="login-popup-inputs">
                     {currState === "Login" ? null : (
                         <>
-                            <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' />
-                            <input name='mobile' onChange={onChangeHandler} value={data.mobile} type="tel" placeholder='Mobile no' />
+                            <input className='inputs' name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' />
+                            <input className='inputs' name='mobile' onChange={onChangeHandler} value={data.mobile} type="tel" placeholder='Mobile no' />
                         </>
                     )}
-                    <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your email' />
+                    <input className='inputs' name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your email' />
                     <div className="password-input">
-                        <input name='password' onChange={onChangeHandler} value={data.password} type={showPassword ? "text" : "password"} placeholder='Password' />
+                        <input className='inputs' name='password' onChange={onChangeHandler} value={data.password} type={showPassword ? "text" : "password"} placeholder='Password' />
                         <span className="password-toggle" onClick={togglePasswordVisibility}>{showPassword ? "Hide" : "Show"}</span>
                         {passwordError && <span className="password-error">{passwordError}</span>} {/* Display password error */}
                     </div>
                     {currState === "Sign Up" && (
                         <>
-                            <input name='confirmPassword' onChange={onChangeHandler} value={data.confirmPassword} type="text" placeholder='Confirm Password' />
+                            <input className='inputs' name='confirmPassword' onChange={onChangeHandler} value={data.confirmPassword} type="text" placeholder='Confirm Password' />
                         </>
                     )}
                     {signupError && <span className="signup-error">{signupError}</span>} {/* Display signup error */}
@@ -130,8 +130,8 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName,setEmail }) => {
 
                 <button type='submit'>{currState === "Sign Up" ? "Create account" : "Login"}</button>
                 <div className="login-popup-condition">
-                    <input type="checkbox" id="termsCheckbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} required />
-                    <label htmlFor="termsCheckbox">By continuing, I agree to the <span className="terms-link" onClick={() => setShowTermsModal(true)}>terms of use & privacy policy.</span></label>
+                    <input className='ui-checkbox' type="checkbox" id="termsCheckbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} required />
+                    <label  htmlFor="termsCheckbox">By continuing, I agree to the <span className="terms-link" onClick={() => setShowTermsModal(true)}>terms of use & privacy policy.</span></label>
                 </div>
                 <div className='login-popup-switch'>
                     {currState === "Login" ? (

@@ -1,30 +1,27 @@
+/* Background Overlay */
 .login-popup {
     position: fixed;
     z-index: 9999;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
     top: 0;
     left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('./assets/food_photo8.jpg'); 
-    background-size: cover;
-    background-position: center;
 }
 
+/* Popup Container */
 .login-popup-container {
     background-color: #fff;
-    background-image: url('https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); 
-    background-size: cover;
-    background-position: center;
     padding: 30px;
     border-radius: 10px;
     width: 400px;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2); /* Add shadow */
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
 }
 
+/* Popup Title */
 .login-popup-title {
     display: flex;
     justify-content: space-between;
@@ -33,203 +30,145 @@
     margin-bottom: 20px;
 }
 
-.login-popup-title img{
-    width: 16px;
+.login-popup-title h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px; /* Larger title font size */
+}
+
+.login-popup-title img {
+    width: 24px;
     cursor: pointer;
 }
 
-.login-popup-title h2 {
-    margin: 0;
-    color: #333; /* Darken title color */
-}
-
+/* Input Fields */
 .login-popup-inputs input {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 10px;
+    padding: 12px; /* Increased padding for input fields */
     margin-bottom: 20px;
-    border: 1px solid #666;
-    border-radius: 4px;
-    border-bottom: 2px solid #ddd; /* Add bottom border */
-    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease; /* Smooth border transition */
 }
 
 .login-popup-inputs input::placeholder {
-    color: #aaa; /* Placeholder text color */
+    color: #999;
 }
 
-.login-popup-condition {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-}
-
-.login-popup-condition p {
-    margin: 0;
-    color: #666; /* Lighten text color */
-}
-
-.login-popup-condition input {
-    margin-right: 10px;
-    margin-top: 5px;
-}
-
-.login-popup-condition input:checked + p {
-    color: #333; /* Change text color when checkbox is checked */
-}
-
-.login-popup-condition input:focus + p {
-    font-weight: bold; /* Add emphasis to text when checkbox is focused */
-}
- .login-popup-switch{
-    padding: 20px;
- }
-
-.login-popup-container button{
+/* Buttons */
+.login-popup-container button {
     width: 100%;
     padding: 15px;
-    font-size: 15px;
-    background-color: tomato; /* Button color */
+    font-size: 16px; /* Increased font size for buttons */
+    background-color: tomato;
     color: #fff;
     border: none;
     border-radius: 5px;
-
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Add transition effect */
+    transition: background-color 0.3s ease;
 }
 
 .login-popup-container button:hover {
-    background-color: rgb(144, 33, 14); /* Darken button color on hover */
+    background-color: #d13913; /* Darker hover color */
 }
 
+/* Links */
 .login-popup-links {
-    color: tomato; /* Set initial color */
+    color: tomato;
     cursor: pointer;
-    transition: color 0.3s; /* Add transition effect */
+    transition: color 0.3s;
 }
 
-.login-popup-links :hover {
-    color: tomato; /* Change color on hover */
+.login-popup-links:hover {
+    color: #d13913; /* Darker hover color */
 }
 
+/* New Styles */
 
-.terms-modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    max-width: 80%;
-    max-height: 100%;
-    overflow-y: auto;
-    position: absolute; /* Ensure positioning is relative to this element */
+/* Checkbox Settings */
+.ui-checkbox {
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #fff; /* White */
+    --primary-hover-color: #4096ff; /* Lighter Blue */
+
+    /* Checkbox */
+    --checkbox-diameter: 20px;
+    --checkbox-border-radius: 5px;
+    --checkbox-border-color: #d9d9d9;
+    --checkbox-border-width: 1px;
+    --checkbox-border-style: solid;
+
+    /* Checkmark */
+    --checkmark-size: 1.2;
 }
 
+.ui-checkbox,
+.ui-checkbox *,
+.ui-checkbox *::before,
+.ui-checkbox *::after {
+    box-sizing: border-box;
+}
 
-.terms-modal {
+.ui-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: var(--checkbox-diameter);
+    height: var(--checkbox-diameter);
+    border-radius: var(--checkbox-border-radius);
+    background: var(--secondary-color);
+    border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.ui-checkbox::after {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Ensure it's above other content */
+    right: 0;
+    bottom: 0;
+    box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+    border-radius: inherit;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
 }
 
-.terms-modal-content {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 10px;
-    max-width: 50%;
-    max-height: 100%;
-    overflow: auto; /* Enable scrolling if content overflows */
-}
-
-.terms-modal-content h2 {
-    margin-top: 0;
-    color: salmon;
-}
-
-.terms-modal-content h3 {
-    margin-top: 10px;
-    color: tomato;
-}
-
-.terms-modal-content p {
-    
-    line-height: 1.5;
-    font-size: 15px;
-}
-
-.terms-modal-content .close {
-    width: 16px;
+.ui-checkbox::before {
+    content: "";
     position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+    top: 40%;
+    left: 50%;
+    width: 4px;
+    height: 7px;
+    border-right: 2px solid var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    opacity: 0;
+    transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
 }
 
-.terms-and-conditions {
-    margin-top: 20px;
-    max-height: 300px; /* Limit height for scrolling */
+/* Actions */
+.ui-checkbox:hover {
+    border-color: var(--primary-color);
 }
 
-.terms-link{
-    color: tomato;
-    cursor: pointer;
+.ui-checkbox:checked {
+    background: var(--primary-color);
+    border-color: transparent;
 }
 
+.ui-checkbox:checked::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+    transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
 
-.password-input {
-    position: relative;
-  }
-  
-  .password-input input[type="password"] {
-    padding-right: 30px; /* Add padding to accommodate the toggle button */
-  }
-  
-  .password-toggle {
-    font-size: 15px;
-    color: green;
-    position: absolute;
-    top: 30%; /* Position vertically centered */
-    right: 10px; /* Adjust the position as needed */
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #666;
-  }
-  
-  .password-toggle:hover {
-    color: #333;
-    color: red;
-  }
-  
-  .password-error {
-    padding: 0%;
-    color: red;
-    animation: blink-animation 1s infinite;
-  }
-  
-  @keyframes blink-animation {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-
-  .login{
-    padding: 5px;
-    line-height: 1.5;
-  }
+.ui-checkbox:active:not(:checked)::after {
+    transition: none;
+    box-shadow: none;
+    opacity: 1;
+}

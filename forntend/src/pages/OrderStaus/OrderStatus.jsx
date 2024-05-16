@@ -67,16 +67,18 @@ const OrderStatus = () => {
                             className={`order-status-step ${currentIndex === index ? 'active' : ''}`}
                         >
                             <div className="status">
-                                <img src={step.icon} alt={step.name} />
-                                <h3>{step.name}</h3>
-                                <p className="step-time">{stepTimes[index]}</p>
-                            </div>
+    <img src={step.icon} alt={step.name} />
+    <div>
+        <h3 className="step-name">{step.name}</h3>
+        <p className="step-time">{stepTimes[index]}</p>
+    </div>
+</div>
                            {/* Display expected time for each step */}
                         </motion.div>
              
                     ))}
                     <div className="map-button">
-                    <button onClick={handleTrackDelivery}>Track Delivery on Map</button>
+                    <div   onClick={handleTrackDelivery}><img src={assets.route} alt="" /></div>
                     </div>
                   
                 </div>

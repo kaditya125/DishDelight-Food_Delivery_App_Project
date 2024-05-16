@@ -19,16 +19,16 @@ const MapContainer = () => {
     lng: 77.175209
   };
 
-  const directionsCallback = (response) => {
+  const directionsCallback = async (response) => {
     if (response !== null && response.status === 'OK') {
-      setDirections(response);
+      await setDirections(response);
     }
   };
 
   useEffect(() => {
-    const calculateDirections = () => {
+    const calculateDirections = async () => {
       const directionsService = new window.google.maps.DirectionsService();
-      directionsService.route({
+      await directionsService.route({
         origin: deliveryPersonLocation,
         destination: customerLocation,
         travelMode: 'DRIVING',
@@ -119,8 +119,3 @@ const MapContainer = () => {
 };
 
 export default MapContainer;
-
-
-
-
-

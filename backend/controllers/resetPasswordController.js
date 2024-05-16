@@ -21,7 +21,7 @@ const resetPassword = async (req, res) => {
        // console.log(id);
     
         const validuser = await userModel.findOne({_id:id, varifyToken:token} )
-       console.log(validuser);
+      // console.log(validuser);
         if (!validuser) {
             return res.status(404).json({ status: 404, message: "User not found or invalid token" });
         }
