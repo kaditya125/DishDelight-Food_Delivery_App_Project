@@ -312,4 +312,38 @@
   .theme-switcher_switch:active > .icon {
     stroke: white;
   }
-  
+  @media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        background-color: inherit;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        max-width: 90px;
+    }
+
+    .navbar-right {
+        gap: 10px;
+    }
+
+    .search-bar input {
+        width: 100px;
+    }
+}
