@@ -88,7 +88,7 @@ const Footer = () => {
               <li>
               <a href="https://wa.me/9102202267?text=Check%20out%20DishDelight%20for%20delicious%20meals%20delivered%20to%20your%20doorstep!%20Visit%20our%20website:%20https://food-delivery-app-project-1-user-module.onrender.com/">
                   <img src={assets.whatsapp} alt="" />
-                  <span>9102202267</span>
+                  <span>+919102202267</span>
                 </a>
               </li>
               <li>
