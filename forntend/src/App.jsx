@@ -19,6 +19,8 @@ import EmailVarification from './components/EmailVarification/EmailVarification'
 import MapContainer from './components/MapContainer/MapContainer';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import AboutUs from './components/AboutUs/AboutUs';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import Delivery from './components/Delivery/Delivery';
 
 
 const App = () => {
@@ -49,6 +51,8 @@ const App = () => {
                     <Route path='/map-container' element={<MapContainer/>}/>
                     <Route path='/product-details' element={<ProductDetail />} />
                     <Route path='about-us' element={<AboutUs/>}/>
+                    <Route path='privacy-policy' element={<PrivacyPolicy/>}/>
+                    <Route path='delivery'  element={<Delivery/>}/>
 
                 </Routes>
             </div>

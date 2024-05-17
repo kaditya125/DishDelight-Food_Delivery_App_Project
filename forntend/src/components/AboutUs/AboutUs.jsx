@@ -11,7 +11,7 @@ const AboutUs = () => {
       </p>
       <h2>Our Story</h2>
       <p>
-        DishDelight was founded in 2023 by a group of food enthusiasts who saw a need for a better food delivery service. We started with a simple idea: to bring great food to people, wherever they are. Today, we partner with hundreds of restaurants to bring a wide variety of cuisines to our customers.
+        DishDelight was founded in 2024 by a group of food enthusiasts who saw a need for a better food delivery service. We started with a simple idea: to bring great food to people, wherever they are. Today, we partner with hundreds of restaurants to bring a wide variety of cuisines to our customers.
       </p>
       <h2>Our Team</h2>
       <p>
