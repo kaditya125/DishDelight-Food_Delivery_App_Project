@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './Footer.css';
 import { assets } from '../../assets/assets';
+import {Link }  from 'react-router-dom'
 
 const Footer = () => {
   const handleMapClick = () => {
@@ -64,7 +65,7 @@ const Footer = () => {
           <h2>COMPANY</h2>
           <ul>
             <li><a href="./">Home</a></li>
-            <li>About us</li>
+            <li><Link to="/about-us">About Us</Link></li>
             <li>Delivery</li>
             <li>Privacy Policy</li>
           </ul>

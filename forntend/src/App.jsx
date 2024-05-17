@@ -18,6 +18,7 @@ import PassWordReset from './components/PassWordReset/PassWordReset';
 import EmailVarification from './components/EmailVarification/EmailVarification';
 import MapContainer from './components/MapContainer/MapContainer';
 import ProductDetail from './components/ProductDetail/ProductDetail';
+import AboutUs from './components/AboutUs/AboutUs';
 
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
                     <Route path='/email-verification' element={<EmailVarification email={email}/>}/>
                     <Route path='/map-container' element={<MapContainer/>}/>
                     <Route path='/product-details' element={<ProductDetail />} />
+                    <Route path='about-us' element={<AboutUs/>}/>
 
                 </Routes>
             </div>
