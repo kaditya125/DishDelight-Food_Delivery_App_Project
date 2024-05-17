@@ -65,9 +65,9 @@ const Footer = () => {
           <h2>COMPANY</h2>
           <ul>
             <li><a href="./">Home</a></li>
-            <li><Link to="/about-us">About Us</Link></li>
-            <li><Link to="/delivery">Delivery</Link></li>
-            <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/delivery">Delivery</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </div>
         <div className="footer-content-right">
