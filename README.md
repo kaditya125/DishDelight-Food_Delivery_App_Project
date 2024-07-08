@@ -73,21 +73,21 @@ To get a local copy up and running, follow these steps:
        npm start
     The application should now be running on http://localhost:3000 for the frontend and http://localhost:5000 for the backend.
 
-##Usage
- -Open your browser and go to http://localhost:3000.
- -Register as a new user or log in with your existing account.
- -Browse available restaurants and menus.
- -Place an order and enjoy your meal!
+## Usage
+ - Open your browser and go to http://localhost:3000.
+ - Register as a new user or log in with your existing account.
+ - Browse available restaurants and menus.
+ - Place an order and enjoy your meal!
  
-##Contributing
+## Contributing
       Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-##Fork the Project
-   -Create your Feature Branch (git checkout -b feature/AmazingFeature)
-   -Commit your Changes (git commit -m 'Add some AmazingFeature')
-   -Push to the Branch (git push origin feature/AmazingFeature)
-   -Open a Pull Request
-##License
+## Fork the Project
+   - Create your Feature Branch (git checkout -b feature/AmazingFeature)
+   - Commit your Changes (git commit -m 'Add some AmazingFeature')
+   - Push to the Branch (git push origin feature/AmazingFeature)
+   - Open a Pull Request
+## License
     Distributed under the MIT License. See LICENSE for more information.
 
 Contact
