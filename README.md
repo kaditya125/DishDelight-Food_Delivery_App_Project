@@ -31,13 +31,13 @@ DishDelight is designed to provide a seamless and enjoyable food ordering experi
 Here are some screenshots of the DishDelight platform:
 
 ### Home Page
-![Home Page](screenshots/home_page.png)
+![Home Page](screenshots/home_page.png.png)
 
 ### Restaurant Listing
-![Restaurant Listing](screenshots/menu.png)
+![Restaurant Listing](screenshots/menu.png.png)
 
 ### Order Summary
-![Order Summary](screenshots/order_status.png)
+![Order Summary](screenshots/order_status.png.png)
 
 ## Technologies Used
 
