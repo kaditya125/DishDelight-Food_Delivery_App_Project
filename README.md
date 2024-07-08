@@ -39,5 +39,58 @@ DishDelight is designed to provide a seamless and enjoyable food ordering experi
 To get a local copy up and running, follow these steps:
 
 1. Clone the repository:
-   ```sh
+   
    git clone https://github.com/kaditya125/Food_Delivery_App_Project.git
+   
+2. Navigate to the project directory:
+
+   cd Food_Delivery_App_Project
+   
+3. Install dependencies for both the frontend and backend:
+
+      # For the backend
+        cd backend
+        npm install
+
+      # For the frontend
+       cd ../frontend
+       npm install
+   
+5. Create a .env file in the backend directory and add the following environment variables:
+
+
+      PORT=5000
+      MONGO_URI=<your_mongodb_uri>
+      JWT_SECRET=<your_jwt_secret>
+      
+6. Run the application:
+
+
+      # In the backend directory
+      npm start
+
+       # In the frontend directory
+       npm start
+    The application should now be running on http://localhost:3000 for the frontend and http://localhost:5000 for the backend.
+
+##Usage
+ -Open your browser and go to http://localhost:3000.
+ -Register as a new user or log in with your existing account.
+ -Browse available restaurants and menus.
+ -Place an order and enjoy your meal!
+ 
+##Contributing
+      Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+##Fork the Project
+   -Create your Feature Branch (git checkout -b feature/AmazingFeature)
+   -Commit your Changes (git commit -m 'Add some AmazingFeature')
+   -Push to the Branch (git push origin feature/AmazingFeature)
+   -Open a Pull Request
+##License
+    Distributed under the MIT License. See LICENSE for more information.
+
+Contact
+Aditya Kumar - kaditya125
+
+## Project Link: https://github.com/kaditya125/Food_Delivery_App_Project
