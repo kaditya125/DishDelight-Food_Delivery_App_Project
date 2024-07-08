@@ -89,6 +89,7 @@ import delivered from './delivered.png'
 import pending from './pending.gif'
 import Shipped from './Shipped.png'
 import ordered from './ordered.png'
+import route from './route.gif';
 
 
 export const assets = {
@@ -102,6 +103,7 @@ export const assets = {
     pending,
     shop,
     shop1,
+    route,
     logo1,
     logo2,
     search,

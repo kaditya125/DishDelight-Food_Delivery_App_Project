@@ -34,6 +34,10 @@
     cursor: pointer;
     border-radius: 50%;
     transition: 0.2s;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #656363,
+               -15px -15px 30px #ffffff;
 }
 
 .explore-menu-list-item p{
@@ -41,6 +45,7 @@
     color: #747474;
     font-size: max(1.4vw,16px);
     cursor: pointer;
+    
 }
 
 .explore-menu hr{

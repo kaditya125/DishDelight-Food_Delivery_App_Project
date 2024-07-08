@@ -20,6 +20,7 @@
   .footer-content-left,
   .footer-content-right,
   .footer-content-center {
+    color: #fff;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -38,6 +39,7 @@
   .footer-content-center h2 {
     color: wheat;
   }
+  
   
   .footer-social-icons img {
     width: 40px;
@@ -111,9 +113,42 @@
   width: 30px; /* Adjust size as needed */
   /* Adjust size as needed */
   
+  
 }
 .download ul{
   display: flex;
   width: 150px; /* Adjust width of icons */
   height: auto; 
+  
+}
+.download img{
+  border-radius: 30px;
+  background: #312f2f;
+  box-shadow: 15px 15px 30px #8b8181,
+             -15px -15px 30px #373636;
+}
+
+
+.container {
+  position: relative;
+  padding: 40px;
+  width: 100%;
+  height: 100%; /* Adjust to fill the container */
+}
+
+.aerial-view-media {
+  width: 100%;
+  height: 60%; /* Adjust to fill the container */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+.footer-content-aerial-view-container {
+  width: 100%; /* Adjust to fit the footer */
+  max-width: 400px; /* Adjust maximum width */
+  height: 250px; /* Adjust height */
+  margin-top: 20px; /* Adjust margin */
+}
+
+.footer-content-aerial-view-container h2{
+  color: wheat;
 }

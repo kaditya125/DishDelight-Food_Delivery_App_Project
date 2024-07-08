@@ -4,10 +4,12 @@ import { connectDb } from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
 import sendMailRouter from "./routes/sendMailRouter.js";
+import resetPasswordRouter from "./routes/resetPasswordRoute.js";
 
 import 'dotenv/config';
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
+const router = express.Router();
 
 // App configuration
 const app = express();
@@ -27,6 +29,8 @@ app.use("/api/user", userRouter);
 app.use("/api/cart",cartRouter);
 app.use("/api/order",orderRouter);
 app.use("/api/mail", sendMailRouter);
+app.use("/api/reset-password", resetPasswordRouter);
+
 
 
 // Root route

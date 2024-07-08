@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer/Footer'
 
 const App = () => {
-  const url = "http://localhost:4000";
+  const url = "https://food-delivery-app-project-3.onrender.com"
 
   return (
     <div>

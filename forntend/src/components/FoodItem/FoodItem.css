@@ -4,7 +4,10 @@
      border-radius: 15px;
      box-shadow: 0px 0px 10px #00000015;
      transition: 0.3s;
-     animation: fadeIn 1s;
+     animation: fadeIn 0.5s;
+     background: #e0e0e0;
+     box-shadow: 15px 15px 30px #bebebe,
+                -15px -15px 30px #ffffff;
 }
 
 .food-item-image{

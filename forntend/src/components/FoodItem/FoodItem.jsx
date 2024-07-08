@@ -1,28 +1,40 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import './FoodItem.css';
 import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 const FoodItem = ({ id, name, price, description, image }) => {
+  const navigate = useNavigate();
+  const { food_list } = useContext(StoreContext);
   const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
 
   // Get the quantity of this item in the cart
   const itemCount = cartItems[id] || 0;
 
-  const handleAddToCart = () => {
+  const handleFoodItemClick = () => {
+    // Redirect to Product-details route with state containing the item data
+    navigate('/product-details', {
+      state: { id, name, price, description, image } // Pass item details as state
+    });
+  };
+
+  const handleAddToCart = (event) => {
+    event.stopPropagation(); // Prevent propagation of the click event
     addToCart(id);
     toast.success(`${name} added to cart`); // Display success toast for adding item to cart
   };
-
-  const handleRemoveFromCart = () => {
+  
+  const handleRemoveFromCart = (event) => {
+    event.stopPropagation(); // Prevent propagation of the click event
     removeFromCart(id);
     toast.info(`${name} removed from cart`); // Display info toast for removing item from cart
   };
-
+  
   return (
-    <div className='food-item'>
+    <div className='food-item' onClick={handleFoodItemClick}> {/* Attach onClick event to the outer div */}
       <div className="food-item-img-container">
         <img src={`${url}/images/${image}`} alt="" className="food-item-image" />
         {

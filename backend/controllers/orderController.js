@@ -9,6 +9,7 @@ const placeOrder = async (req, res) => {
         // Create a new order
         const newOrder = new orderModel({
             userId: req.body.userId,
+            userEmail: req.body.userEmail, // Add user's email address to the order details
             items: req.body.items,
             amount: req.body.amount,
             address: req.body.address
@@ -51,7 +52,7 @@ const placeOrder = async (req, res) => {
         const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: 'payment',
-            success_url: `${req.headers.origin}/verify?success=true&orderId=${newOrder._id}`,
+            success_url: `${req.headers.origin}/verify?success=true&orderId=${newOrder._id}&order=${newOrder}}`,
             cancel_url: `${req.headers.origin}/verify?success=false&orderId=${newOrder._id}`,
         });
 
@@ -66,6 +67,7 @@ const placeOrder = async (req, res) => {
         res.status(500).json({ success: false, message: "Error placing order from backend" });
     }
 };
+
 
 const verifyOrder  = async (req,res) =>{
      const {orderId,success}  = req.body;
@@ -97,6 +99,19 @@ const userOrders =async ( req, res )=>{
      }
 }
 
+const getOrderById = async (req, res) => {
+    try {
+        console.log("hey");
+        const orderId = req.orderId;
+        const order = await orderModel.findById(orderId);
+        res.json({ success: true, data: order });
+    } catch (error) {
+        console.error('Error retrieving order:', error);
+        res.status(500).json({ success: false, message: 'Error retrieving order' });
+    }
+};
+
+
 
 //Listing order for admin panel
 
@@ -124,4 +139,4 @@ const updateStatus = async (req,res) =>{
   }
 }
 
-export { placeOrder,verifyOrder,userOrders,listorders,updateStatus};
+export { placeOrder,verifyOrder,userOrders,listorders,updateStatus,getOrderById};

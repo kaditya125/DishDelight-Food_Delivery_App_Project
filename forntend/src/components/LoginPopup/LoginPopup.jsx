@@ -6,11 +6,12 @@ import { useContext } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom'; // Import useNavigate and NavLink together
 
-const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
+const LoginPopup = ({ setShowLogin, setLoggedInUserName,setEmail }) => {
     const { url, setToken } = useContext(StoreContext);
-    const [currState, setCurrState] = useState("Sign Up");
+    const navigate = useNavigate();
+    const [currState, setCurrState] = useState("Login");
     const [isChecked, setIsChecked] = useState(false);
     const [showTermsModal, setShowTermsModal] = useState(false);
     const [data, setData] = useState({
@@ -25,12 +26,10 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
     const [signupError, setSignupError] = useState(""); // New state for signup error
 
     const onChangeHandler = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
+        const { name, value } = event.target;
         setData({ ...data, [name]: value });
-        // Clear password error when user starts typing again
         setPasswordError("");
-        setSignupError(""); // Clear signup error when user starts typing
+        setSignupError("");
     };
 
     const togglePasswordVisibility = () => {
@@ -41,15 +40,13 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
         event.preventDefault();
         try {
             const response = await axios.post(`${url}/api/user/login`, data);
-            console.log(response);
             if (response.data.success) {
-                const token = response.data.token;
+                const { token, name } = response.data;
                 localStorage.setItem('token', token);
                 setToken(token);
                 setShowLogin(false);
-                const userName = response.data.name; 
-                localStorage.setItem('Name', userName);
-                setLoggedInUserName(userName);
+                localStorage.setItem('Name', name);
+                setLoggedInUserName(name);
                 toast.success("Login successful!");
             } else {
                 if (response.data.message === "Incorrect Password") {
@@ -62,36 +59,44 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
             if (error.response && error.response.status === 401) {
                 setPasswordError("Incorrect Password!");
                 toast.error(error.response.data.message); 
-            }
-                // Set password error message
-                else{
-                    setPasswordError("user not found")
-                    toast.error(error.response.data.message);
-                }
-            }
-            
-                console.error("Error logging in:", error);
+            } else {
+                setPasswordError("User not found");
                 toast.error("An error occurred!");
-        
-        
+            }
+            console.error("Error logging in:", error);
+        }
     };
 
     const onSignup = async (event) => {
         event.preventDefault();
         try {
             const response = await axios.post(`${url}/api/user/register`, data);
+            
             if (response.data.success) {
-                const token = response.data.token;
-                localStorage.setItem("token", JSON.stringify(token));
+                const { token ,email} = response.data;
+                localStorage.setItem("token", response.data.token);
                 setToken(token);
                 setShowLogin(false);
+                
                 toast.success("Sign up successful!");
+                const sendVerificationEmail = async () => {
+                    try {
+                        await axios.post(`${url}/api/mail/send-verification-email`, { email: response.data.email });
+                        toast.success('Verification email sent successfully');
+                        setEmail(response.data.email);
+                        navigate('/email-verification'); // Pass email as state
+                    } catch (error) {
+                        console.error('Error sending verification email:', error);
+                        toast.error('Failed to send verification email');
+                    }
+                };
+                sendVerificationEmail();
             } else {
                 setSignupError(response.data.message); // Set signup error message
             }
         } catch (error) {
             console.error("Error registering user:", error);
-            toast.error(error.response.data.message);
+            toast.error(error?.response?.data?.message);
         }
     };
 
@@ -105,19 +110,19 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
                 <div className="login-popup-inputs">
                     {currState === "Login" ? null : (
                         <>
-                            <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' />
-                            <input name='mobile' onChange={onChangeHandler} value={data.mobile} type="tel" placeholder='Mobile no' />
+                            <input className='inputs' name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' />
+                            <input className='inputs' name='mobile' onChange={onChangeHandler} value={data.mobile} type="tel" placeholder='Mobile no' />
                         </>
                     )}
-                    <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your email' />
+                    <input className='inputs' name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your email' />
                     <div className="password-input">
-                        <input name='password' onChange={onChangeHandler} value={data.password} type={showPassword ? "text" : "password"} placeholder='Password' />
+                        <input className='inputs' name='password' onChange={onChangeHandler} value={data.password} type={showPassword ? "text" : "password"} placeholder='Password' />
                         <span className="password-toggle" onClick={togglePasswordVisibility}>{showPassword ? "Hide" : "Show"}</span>
                         {passwordError && <span className="password-error">{passwordError}</span>} {/* Display password error */}
                     </div>
                     {currState === "Sign Up" && (
                         <>
-                            <input name='confirmPassword' onChange={onChangeHandler} value={data.confirmPassword} type="text" placeholder='Confirm Password' />
+                            <input className='inputs' name='confirmPassword' onChange={onChangeHandler} value={data.confirmPassword} type="text" placeholder='Confirm Password' />
                         </>
                     )}
                     {signupError && <span className="signup-error">{signupError}</span>} {/* Display signup error */}
@@ -125,21 +130,18 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
 
                 <button type='submit'>{currState === "Sign Up" ? "Create account" : "Login"}</button>
                 <div className="login-popup-condition">
-                    <input type="checkbox" id="termsCheckbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} required />
-                    <label htmlFor="termsCheckbox">By continuing, I agree to the <span className="terms-link" onClick={() => setShowTermsModal(true)}>terms of use & privacy policy.</span></label>
+                    <input className='ui-checkbox' type="checkbox" id="termsCheckbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} required />
+                    <label  htmlFor="termsCheckbox">By continuing, I agree to the <span className="terms-link" onClick={() => setShowTermsModal(true)}>terms of use & privacy policy.</span></label>
                 </div>
                 <div className='login-popup-switch'>
-                    {currState === "Login" ?
-                    <div className='login'>
-                        <p>Create a new account? <span className="login-popup-links" onClick={() => setCurrState("Sign Up")}>Click here</span></p>
-                        <p>Forget Password? <NavLink to="./password-reset" className={"login-popup-links"}  onClick={() => setShowLogin(false)}>Click Here</NavLink></p>
-
-                    </div>
-                        
-                        :
-                        
+                    {currState === "Login" ? (
+                        <div className='login'>
+                            <p>Create a new account? <span className="login-popup-links" onClick={() => setCurrState("Sign Up")}>Click here</span></p>
+                            <p>Forget Password? <NavLink to="./password-reset" className={"login-popup-links"}  onClick={() => setShowLogin(false)}>Click Here</NavLink></p>
+                        </div>
+                    ) : (
                         <p>Already have an account? <span className="login-popup-links" onClick={() => setCurrState("Login")}>Login here</span></p>
-                        }
+                    )}
                 </div>
             </form>
 
@@ -164,8 +166,6 @@ const LoginPopup = ({ setShowLogin, setLoggedInUserName }) => {
                     </div>
                 </div>
             )}
-
-            
         </div>
     );
 }

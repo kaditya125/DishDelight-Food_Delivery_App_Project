@@ -1,0 +1,91 @@
+/* src/components/AboutUs.css */
+
+.about-container {
+    padding: 40px;
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.8;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+    position: relative;
+  }
+  
+  h1::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: #ff6347;
+    margin: 1rem auto 0;
+    border-radius: 2px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #444;
+    position: relative;
+  }
+  
+  h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #ff6347;
+    margin-top: 0.5rem;
+    border-radius: 2px;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+  
+  .about-container p:last-child {
+    margin-bottom: 0;
+  }
+  
+  p strong {
+    color: #333;
+  }
+  
+  p a {
+    color: #ff6347;
+    text-decoration: none;
+  }
+  
+  p a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 2.2rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    p {
+      font-size: 1rem;
+    }
+  }
+  

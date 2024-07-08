@@ -1,18 +1,22 @@
-// StoreContextProvider.js
+
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PlaceOrder from "../pages/PlaceOrder/PlaceOrder";
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [discount, setDiscount] = useState(0);
-  const url = "http://localhost:4000"
+  const url = "https://food-delivery-app-project-3.onrender.com" || "http://localhost:4000"
   const [ token,setToken] = useState("");
   const  [food_list,setFoodList] =   useState([]);
   const [usedPromoCodes, setUsedPromoCodes] = useState([]);
+  const [orderItems, setOrderItems] = useState([]);
+  const [orderData, setOrderData] = useState({});
+  const [email, setEmail] = useState("");
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
@@ -124,11 +128,13 @@ const applyPromoCode = (promoCode) => {
     url,
     token,
     setToken,
+    orderData, setOrderData,orderItems, setOrderItems,email,setEmail
   };
 
   return (
     <StoreContext.Provider value={contextValue}>
       {props.children}
+      
     </StoreContext.Provider>
   );
 };
