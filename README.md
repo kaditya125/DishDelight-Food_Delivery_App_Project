@@ -31,31 +31,31 @@ DishDelight is designed to provide a seamless and enjoyable food ordering experi
 Here are some screenshots of the DishDelight platform:
 
 ### Home Page
-![Home Page](home_page.png.png)
+![Home Page](screenshots/home_page.png.png)
 
 ### Menu
-![Menu](menu.png.png)
+![Menu](screenshots/menu.png.png)
 
 ### Order List
-![Order List](order_list.png.png)
+![Order List](screenshots/order_list.png.png)
 
 ### Order Status
-![Order Status](order_status.png.png)
+![Order Status](screenshots/order_status.png.png)
 
 ### Cart
-![Cart](cart.png.png)
+![Cart](screenshots/cart.png.png)
 
 ### Stripe Payment
-![Stripe Payment](stripe_payment.png.png)
+![Stripe Payment](screenshots/stripe_payment.png.png)
 
 ### Footer
-![Footer](footer.png.png)
+![Footer](screenshots/footer.png.png)
 
 ### Delivery
-![Delivery](delivery.png.png)
+![Delivery](screenshots/delivery.png.png)
 
 ### Food Card
-![Food Card](food_card.png.png)
+![Food Card](screenshots/food_card.png.png)
 
 ## Technologies Used
 
