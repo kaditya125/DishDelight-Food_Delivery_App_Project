@@ -26,6 +26,19 @@ DishDelight is designed to provide a seamless and enjoyable food ordering experi
 - Responsive Design: Optimized for both desktop and mobile devices.
 - Review and Rating System: Customers can leave reviews and rate their dining experiences.
 
+## Screenshots
+
+Here are some screenshots of the DishDelight platform:
+
+### Home Page
+![Home Page](screenshots/home_page)
+
+### Restaurant Listing
+![Restaurant Listing](screenshots/cart)
+
+### Order Summary
+![Order Summary](screenshots/order_status)
+
 ## Technologies Used
 
 - **Frontend:** React.js, Redux, Bootstrap
