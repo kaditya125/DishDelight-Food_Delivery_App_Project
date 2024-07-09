@@ -120,6 +120,7 @@ const applyPromoCode = (promoCode) => {
     food_list,
     cartItems,
     setCartItems,
+    fetchFoodList,
     addToCart,
     removeFromCart,
     getTotalCartAmount,
