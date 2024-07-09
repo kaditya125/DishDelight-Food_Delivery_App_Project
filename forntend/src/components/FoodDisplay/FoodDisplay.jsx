@@ -1,24 +1,25 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import './FoodDisplay.css';
 import { StoreContext } from '../../context/StoreContext';
 import FoodItem from '../FoodItem/FoodItem';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'; // Import the LoadingSpinner component
 
-const FoodDisplay = ({ category }) => {
-    const { food_list, fetchFoodList } = useContext(StoreContext); // Assuming fetchFoodList fetches food data
+const FoodDisplay = ({ category, fetchFoodList }) => {
+    const { food_list } = useContext(StoreContext);
     const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
     const navigate = useNavigate(); // Initialize useNavigate
     const [loading, setLoading] = useState(true); // Initialize loading state
 
-    useEffect(() => {
-        // Fetch data when the component mounts
-        const fetchData = async () => {
-            setLoading(true); // Set loading to true before fetching data
-            await fetchFoodList(); // Fetch food list from the context
-            setLoading(false); // Set loading to false after data is fetched
-        };
+    // Fetch data using the passed callback function
+    const fetchData = async () => {
+        setLoading(true); // Set loading to true before fetching data
+        await fetchFoodList(); // Fetch food list from the context
+        setLoading(false); // Set loading to false after data is fetched
+    };
 
+    // Call fetchData when the component mounts
+    useState(() => {
         fetchData();
     }, [fetchFoodList]); // Dependency array
 
